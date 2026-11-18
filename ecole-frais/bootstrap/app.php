@@ -13,6 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Derrière le proxy HTTPS de l'hébergeur (Railway, Render...).
+        $middleware->trustProxies(at: '*');
         $middleware->alias([
             'role' => VerifierRole::class,
         ]);

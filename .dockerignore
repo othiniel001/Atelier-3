@@ -1,0 +1,15 @@
+.git
+.idea
+src
+target
+pom.xml
+ecole-frais/vendor
+ecole-frais/node_modules
+ecole-frais/.env
+ecole-frais/database/*.sqlite
+ecole-frais/storage/logs/*
+ecole-frais/storage/framework/cache/data/*
+ecole-frais/storage/framework/sessions/*
+ecole-frais/storage/framework/views/*
+ecole-frais/storage/app/recus/*
+ecole-frais/bootstrap/cache/*.php

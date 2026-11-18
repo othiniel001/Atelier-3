@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Observers\JournalObserver;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -38,6 +39,11 @@ class AppServiceProvider extends ServiceProvider
         }
 
         Paginator::useBootstrapFive();
+
+        // En production derrière HTTPS, tous les liens (dont le QR code des reçus) sont générés en https.
+        if (str_starts_with((string) config('app.url'), 'https://')) {
+            URL::forceScheme('https');
+        }
 
         // @montant(1500000) → 1 500 000 FCFA
         Blade::directive('montant', fn ($expr) => "<?php echo e(number_format((int) ({$expr}), 0, ',', ' ').' '.config('ecole.devise')); ?>");
