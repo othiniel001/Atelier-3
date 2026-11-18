@@ -1,0 +1,48 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Third Party Services
+    |--------------------------------------------------------------------------
+    |
+    | This file is for storing the credentials for third party services such
+    | as Resend, Postmark, AWS, and more. This file provides the de facto
+    | location for this type of information, allowing packages to have
+    | a conventional file to locate the various service credentials.
+    |
+    */
+
+    'postmark' => [
+        'key' => env('POSTMARK_API_KEY'),
+    ],
+
+    'resend' => [
+        'key' => env('RESEND_API_KEY'),
+    ],
+
+    'ses' => [
+        'key' => env('AWS_ACCESS_KEY_ID'),
+        'secret' => env('AWS_SECRET_ACCESS_KEY'),
+        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
+
+    'slack' => [
+        'notifications' => [
+            'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
+            'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
+        ],
+    ],
+
+    // Passerelle SMS (étape 9). Driver « log » : les SMS sont écrits dans les logs (développement).
+    // Driver « http » : POST JSON {to, from, message} vers SMS_URL avec un jeton Bearer.
+    'sms' => [
+        'driver' => env('SMS_DRIVER', 'log'),
+        'url' => env('SMS_URL'),
+        'token' => env('SMS_TOKEN'),
+        'expediteur' => env('SMS_EXPEDITEUR', 'ECOLE'),
+        'timeout' => (int) env('SMS_TIMEOUT', 10),
+    ],
+
+];
