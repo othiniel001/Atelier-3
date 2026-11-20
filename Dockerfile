@@ -4,7 +4,7 @@ FROM php:8.3-apache
 RUN apt-get update \
     && apt-get install -y --no-install-recommends libpng-dev libzip-dev libsqlite3-dev unzip \
     && docker-php-ext-install gd zip bcmath pdo_mysql \
-    && a2enmod rewrite \
+    && { a2dismod -f mpm_event mpm_worker || true; } && a2enmod mpm_prefork rewrite \
     && echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf && a2enconf servername \
     && rm -rf /var/lib/apt/lists/*
 

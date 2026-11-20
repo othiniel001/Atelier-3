@@ -41,4 +41,8 @@ chown -R www-data:www-data storage bootstrap/cache
 # Planificateur (rappels SMS quotidiens) en arrière-plan.
 su -s /bin/bash www-data -c "php artisan schedule:work" > /proc/1/fd/1 2>&1 &
 
+# Un seul module MPM doit être actif (sinon : « AH00534 More than one MPM loaded »).
+rm -f /etc/apache2/mods-enabled/mpm_event.* /etc/apache2/mods-enabled/mpm_worker.*
+a2enmod -q mpm_prefork >/dev/null 2>&1 || true
+
 exec apache2-foreground
