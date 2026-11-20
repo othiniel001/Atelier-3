@@ -8,6 +8,7 @@ use App\Models\Echeance;
 use App\Models\Eleve;
 use App\Models\Frais;
 use App\Models\Paiement;
+use App\Models\Parametre;
 use App\Models\ParentEleve;
 use App\Models\Section;
 use App\Models\TypeFrais;
@@ -37,6 +38,9 @@ class AppServiceProvider extends ServiceProvider
         foreach (self::MODELES_JOURNALISES as $modele) {
             $modele::observe(JournalObserver::class);
         }
+
+        // Paramètres de l'établissement saisis par l'admin (nom, adresse, devise…) → config('ecole.*').
+        Parametre::appliquer();
 
         Paginator::useBootstrapFive();
 

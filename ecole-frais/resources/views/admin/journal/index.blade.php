@@ -13,7 +13,7 @@
     <tbody>
     @forelse($journaux as $j)
         <tr><td class="text-nowrap">{{ $j->created_at->format('d/m/Y H:i:s') }}</td><td>{{ $j->user?->name ?? 'Système' }}</td><td>{{ $j->action }}</td>
-            <td>{{ class_basename($j->modele_type) }} #{{ $j->modele_id }}</td>
+            <td>@if($j->modele_type){{ class_basename($j->modele_type) }} #{{ $j->modele_id }}@else<span class="text-muted">{{ $j->action === 'parametres' ? 'Établissement' : '—' }}</span>@endif</td>
             <td class="small">
                 @foreach(($j->nouvelles_valeurs ?? $j->anciennes_valeurs ?? []) as $champ => $valeur)
                     <div><strong>{{ $champ }}</strong> :

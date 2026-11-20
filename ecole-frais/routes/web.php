@@ -50,6 +50,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('frais', Admin\FraisController::class)->except('show')->parameters(['frais' => 'frais']);
         Route::resource('utilisateurs', Admin\UtilisateurController::class)->except('show');
         Route::get('journal', [Admin\JournalController::class, 'index'])->name('journal.index');
+        Route::get('parametres', [Admin\ParametreController::class, 'edit'])->name('parametres.edit');
+        Route::put('parametres', [Admin\ParametreController::class, 'update'])->name('parametres.update');
     });
 
     // Caisse : encaissement et reçus (étapes 6, 7)

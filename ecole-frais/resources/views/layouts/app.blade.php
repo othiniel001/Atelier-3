@@ -38,6 +38,7 @@
             ['admin.frais.index', 'Frais & échéances', 'bi-calendar2-check', 'admin.frais.*'],
         ];
         $liens['Système'] = [
+            ['admin.parametres.edit', 'Établissement', 'bi-building', 'admin.parametres.*'],
             ['admin.utilisateurs.index', 'Utilisateurs', 'bi-person-gear', 'admin.utilisateurs.*'],
             ['admin.journal.index', 'Journal', 'bi-journal-text', 'admin.journal.*'],
         ];
