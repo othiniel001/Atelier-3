@@ -7,7 +7,7 @@
     <title>@yield('titre', 'Gestion des frais') — {{ config('ecole.nom') }}</title>
     <link href="{{ asset('vendor/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}?v=3" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}?v=4" rel="stylesheet">
 </head>
 <body class="{{ auth()->check() ? 'avec-menu' : 'invite' }}">
 @auth

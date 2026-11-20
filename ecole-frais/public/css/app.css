@@ -223,3 +223,6 @@ body.invite .conteneur { width: 100%; }
     .barre-laterale, .barre-haut { display: none !important; }
     body.avec-menu .contenu { margin: 0; }
 }
+
+/* ---------- Pages d'erreur ---------- */
+.erreur .code { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--or); margin-bottom: .35rem; }
